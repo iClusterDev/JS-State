@@ -15,7 +15,7 @@ class ScreenMonitor {
 
   create() {
     document.body.appendChild(this.element);
-    store.events.on('display-change', (data) => {
+    store.on('display-change', (data) => {
       const { width, height } = data;
       this.render(width, height);
     });

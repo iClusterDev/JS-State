@@ -25,7 +25,7 @@ class ModeButton {
       e.preventDefault();
       this.toggleMode();
     });
-    store.events.on('mode-change', () => {
+    store.on('mode-change', () => {
       this.render();
     });
   }

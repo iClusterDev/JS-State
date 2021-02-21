@@ -1,5 +1,6 @@
 class Emitter {
   #events;
+
   constructor() {
     this.#events = {};
   }

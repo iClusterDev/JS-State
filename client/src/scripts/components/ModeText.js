@@ -13,7 +13,7 @@ class ModeText {
 
   create() {
     document.body.appendChild(this.element);
-    store.events.on('mode-change', (data) => {
+    store.on('mode-change', (data) => {
       this.render(data);
     });
   }

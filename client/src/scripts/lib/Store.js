@@ -1,11 +1,12 @@
 import Emitter from './Emitter';
 
-class Store {
+class Store extends Emitter {
   #mutations;
   #actions;
   #status;
 
   constructor(config = {}) {
+    super();
     const { state = {}, actions = {}, mutations = {} } = config;
     this.#mutations = mutations;
     this.#actions = actions;
@@ -21,7 +22,7 @@ class Store {
           throw new Error(`Use a mutation to set "${key}" to "${value}"`);
 
         Reflect.set(state, key, value);
-        self.events.emit(`${key}-change`, self.state[key]);
+        self.emit(`${key}-change`, self.state[key]);
         self.#status = 'resting';
         return true;
       },
@@ -46,7 +47,5 @@ class Store {
     return true;
   }
 }
-
-Store.prototype.events = new Emitter();
 
 export default Store;
